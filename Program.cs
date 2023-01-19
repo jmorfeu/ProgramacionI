@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,15 +13,32 @@ namespace ConsoleApp1
 
         {
             
-            Console.WriteLine("Indique el primer numero: ");
-            int valor1=Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Indique el segundo numero: ");
-            int valor2 = Convert.ToInt32(Console.ReadLine());
+          
 
-            Suma suma = new Suma(valor1,valor2);
-            
-            Console.WriteLine($"La Resta es: {suma.ResultadoResta()}");
-            Console.WriteLine($"La suma es: {suma.ResultadoSuma()}");
+            Usuario usuario =new Usuario();
+            Personas personas = new Personas(); 
+           
+
+            personas.Apellido = "Perez";
+            personas.Nombre = "juan";
+            personas.Id = 1;
+
+            usuario.Personas.Add(personas);
+
+            personas.Apellido = "jose";
+            personas.Nombre = "perez";
+            personas.Id = 2;
+
+
+
+            usuario.Personas.Add(personas);
+            //para este ejercio uso una clausura where para buscar en la lista 
+            //defino una variable x para acceder a las propiedades y busco el registro 1
+            //luego obtento el primer record de la pila
+            var _usuarioPersona = usuario.Personas.Where(x => x.Id == 1).First();
+
+            Console.WriteLine($"Los datos de la persona es: {_usuarioPersona.Nombre}");
+
             Console.ReadKey();
 
         }
