@@ -15,13 +15,25 @@ namespace ConsoleApp1
 
 
     }
-    public class  Usuario
+    public class  Usuario: Personas
     {
         public List<Personas> Personas { get; set; }
+   
         public Usuario()
         {
             Personas = new List<Personas>();
             
+        }
+    }
+
+    public class Usuario1: Personas
+    {
+        public List<Personas> Personas { get; set; }
+
+        public Usuario1()
+        {
+            Personas = new List<Personas>();
+
         }
     }
 }

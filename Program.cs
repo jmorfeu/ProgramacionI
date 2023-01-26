@@ -11,36 +11,35 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
 
-        {
-            
-          
+        {            
+                int[] numbers = new int[10];
+                int maxPar = int.MinValue;
+                int pos = -1;
 
-            Usuario usuario =new Usuario();
-            Personas personas = new Personas(); 
-           
+                Console.WriteLine("Ingresa 10 números enteros:");
+                string numerosDigitados = Console.ReadLine();
+              
+                for (int i = 0; i < numerosDigitados.Length; i++)
+                {
+                    numbers[i] = int.Parse(numerosDigitados[0].ToString());
+                    if (numbers[i] % 2 == 0 && numbers[i] > maxPar)
+                    {
+                        maxPar = numbers[i];
+                        pos = i+1;
+                    }
+                }
 
-            personas.Apellido = "Perez";
-            personas.Nombre = "juan";
-            personas.Id = 1;
-
-            usuario.Personas.Add(personas);
-
-            personas.Apellido = "jose";
-            personas.Nombre = "perez";
-            personas.Id = 2;
-
-
-
-            usuario.Personas.Add(personas);
-            //para este ejercio uso una clausura where para buscar en la lista 
-            //defino una variable x para acceder a las propiedades y busco el registro 1
-            //luego obtento el primer record de la pila
-            var _usuarioPersona = usuario.Personas.Where(x => x.Id == 1).First();
-
-            Console.WriteLine($"Los datos de la persona es: {_usuarioPersona.Nombre}");
-
+                if (pos == -1)
+                {
+                    Console.WriteLine("No se encontró ningún número par.");
+                }
+                else
+                {
+                    Console.WriteLine("El número par más grande es {0} y se encuentra en la posición {1}.", maxPar, pos);
+                }
             Console.ReadKey();
-
+        }
+           
         }
     }
-}
+
